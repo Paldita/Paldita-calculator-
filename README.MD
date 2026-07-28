@@ -2,15 +2,17 @@
 
 # Paldita Calculator
 
-A modern, elegant, and feature-rich calculator built with **Angular** and **TypeScript**, combining a polished glassmorphism interface with scientific calculations, keyboard shortcuts, memory functions, calculation history, and responsive design.
+### Modern • Elegant • Fast • Open Source
 
----
+A beautiful calculator application built with **Angular**, **TypeScript**, **SCSS**, and **RxJS**, featuring a clean glassmorphism interface, scientific calculations, keyboard shortcuts, calculation history, memory functions, responsive layouts, and delightful interactions.
 
-![Angular](https://img.shields.io/badge/Angular-v20-DD0031?style=for-the-badge&logo=angular&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-v5-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+<br>
+
+![Angular](https://img.shields.io/badge/Angular-20-DD0031?style=for-the-badge&logo=angular&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
 ![SCSS](https://img.shields.io/badge/SCSS-Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white)
-![RxJS](https://img.shields.io/badge/RxJS-v7-B7178C?style=for-the-badge&logo=reactivex&logoColor=white)
-![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
+![RxJS](https://img.shields.io/badge/RxJS-7-B7178C?style=for-the-badge&logo=reactivex&logoColor=white)
+![MIT License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
 ![Open Source](https://img.shields.io/badge/Open%20Source-Yes-success?style=for-the-badge)
 
 </div>
@@ -19,63 +21,59 @@ A modern, elegant, and feature-rich calculator built with **Angular** and **Type
 
 # Overview
 
-**Paldita Calculator** is an open-source calculator focused on delivering a fast, intuitive, and visually refined calculation experience.
+**Paldita Calculator** is a modern calculator application focused on providing a fast, intuitive, and visually refined calculation experience.
 
-Built with Angular and TypeScript, the project combines modern UI principles with practical functionality. Whether performing quick arithmetic or advanced scientific calculations, the application provides a clean workflow without unnecessary complexity.
+Built with Angular and TypeScript, the project combines elegant design with practical functionality. It supports both everyday calculations and advanced scientific operations while maintaining a responsive interface that works across desktop, tablet, and mobile devices.
 
-The interface is designed around glassmorphism, smooth animations, responsive layouts, keyboard accessibility, and theme customization while maintaining high performance across desktop and mobile devices.
+The application emphasizes performance, accessibility, clean architecture, and a polished user experience without unnecessary complexity.
 
 ---
 
-# Key Features
+# Features
 
-### Modern User Interface
-
-- Glassmorphism-inspired design
-- Smooth transitions and animations
-- Responsive layout
-- Mobile-first experience
-- Desktop optimized
-
-### Calculator Functions
+## Calculator
 
 - Standard arithmetic operations
-- Scientific calculations
-- Percentage operations
-- Decimal support
-- Negative number handling
-- Expression evaluation
+- Scientific calculator
+- Parentheses support
+- Decimal calculations
+- Percentage calculations
+- Positive & negative numbers
+- Continuous expression evaluation
+- High precision calculations
 
-### Productivity
+## Productivity
 
 - Calculation history
-- Memory functions
+- Memory Store (MS)
+- Memory Recall (MR)
+- Memory Add (M+)
+- Memory Subtract (M−)
+- Memory Clear (MC)
 - Keyboard shortcuts
+- Fast keyboard input
 - Quick clear actions
-- Fast input handling
 
-### Customization
+## User Experience
 
+- Beautiful Glassmorphism interface
+- Smooth animations
 - Dark theme
 - Light theme
 - Theme persistence
 - Sound effects
-- Konami Code easter egg
+- Responsive design
+- Mobile friendly
+- Desktop optimized
+- Accessibility focused
 
-### Performance
+## Extras
 
-- Built with Angular
-- TypeScript powered
-- RxJS reactive architecture
+- Konami Code Easter Egg
+- Clean transitions
 - Optimized rendering
-- Fast startup
-
-### Accessibility
-
-- Keyboard navigation
-- Responsive controls
-- Readable typography
-- Touch-friendly interface
+- Modern UI components
+- Lightweight architecture
 
 ---
 
@@ -85,44 +83,185 @@ The interface is designed around glassmorphism, smooth animations, responsive la
 |------------|---------|
 | Angular | Frontend Framework |
 | TypeScript | Application Logic |
-| SCSS | Styling System |
+| SCSS | Styling |
 | RxJS | Reactive Programming |
-| Angular CLI | Development Tooling |
-| HTML5 | Markup |
+| HTML5 | Structure |
 | CSS3 | Layout & Styling |
+| Angular CLI | Development Tooling |
 
 ---
 
-# Why Paldita Calculator?
+# Project Structure
 
-- Modern Angular architecture
-- Clean and maintainable codebase
-- Responsive across devices
-- Beautiful glassmorphism interface
-- Fast and lightweight
-- Open-source under the MIT License
-- Easy to extend with additional calculator features```text
-assets/screenshots/home.png
-assets/screenshots/dark-theme.png
-assets/screenshots/history.png
-assets/screenshots/scientific-mode.png
+```text
+paldita-calculator/
+│
+├── src/
+│   ├── app/
+│   │   ├── components/
+│   │   ├── services/
+│   │   ├── models/
+│   │   ├── app.component.*
+│   │   └── app.config.ts
+│   │
+│   ├── assets/
+│   │   ├── icons/
+│   │   ├── sounds/
+│   │   └── favicon.svg
+│   │
+│   ├── styles/
+│   ├── index.html
+│   ├── main.ts
+│   └── styles.scss
+│
+├── public/
+├── angular.json
+├── package.json
+├── tsconfig.json
+├── vercel.json
+└── README.md
 ```
 
 ---
 
-# Table of Contents
+# Installation
 
-- Overview
-- Features
-- Demo
-- Screenshots
-- Installation
-- Project Structure
-- Tech Stack
-- Browser Support
-- Build
-- Production
-- Scripts
-- Contributing
-- Roadmap
-- License
+## Clone the repository
+
+```bash
+git clone https://github.com/YOUR_USERNAME/paldita-calculator.git
+```
+
+## Navigate to the project
+
+```bash
+cd paldita-calculator
+```
+
+## Install dependencies
+
+```bash
+npm install
+```
+
+## Start development server
+
+```bash
+ng serve
+```
+
+Open your browser:
+
+```
+http://localhost:4200
+```
+
+---
+
+# Available Scripts
+
+| Command | Description |
+|---------|-------------|
+| `npm install` | Install dependencies |
+| `ng serve` | Start development server |
+| `ng build` | Production build |
+| `ng test` | Run unit tests |
+| `ng lint` | Lint source code |
+
+---
+
+# Build
+
+Development
+
+```bash
+ng build
+```
+
+Production
+
+```bash
+ng build --configuration production
+```
+
+The compiled files are generated inside the `dist/` directory.
+
+---
+
+# Browser Support
+
+- Google Chrome
+- Microsoft Edge
+- Mozilla Firefox
+- Safari
+- Brave
+- Opera
+
+---
+
+# Performance
+
+- Fast startup
+- Lazy Angular rendering
+- Optimized bundle generation
+- Responsive interactions
+- Lightweight architecture
+- Mobile optimized
+
+---
+
+# Keyboard Shortcuts
+
+| Key | Action |
+|------|--------|
+| `0-9` | Enter number |
+| `+ - × ÷` | Arithmetic operations |
+| `Enter` | Calculate |
+| `Backspace` | Delete last character |
+| `Escape` | Clear calculator |
+| `.` | Decimal point |
+
+---
+
+# Roadmap
+
+- [ ] Unit Converter
+- [ ] Currency Converter
+- [ ] Calculator Themes
+- [ ] More Scientific Functions
+- [ ] Graphing Calculator
+- [ ] PWA Support
+- [ ] Offline Mode
+- [ ] Internationalization (i18n)
+
+---
+
+# Contributing
+
+Contributions are welcome.
+
+1. Fork the repository.
+2. Create a feature branch.
+3. Commit your changes.
+4. Push to your branch.
+5. Open a Pull Request.
+
+Please follow the project's coding style and keep pull requests focused on a single feature or fix.
+
+---
+
+# License
+
+This project is licensed under the **MIT License**.
+
+See the `LICENSE` file for complete license information.
+
+---
+
+<div align="center">
+
+**Built with ❤️ using Angular & TypeScript**
+
+If you find this project useful, consider giving it a ⭐ on GitHub.
+
+</div>
