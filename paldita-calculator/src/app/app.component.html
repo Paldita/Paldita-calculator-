@@ -1,0 +1,220 @@
+<!-- Ambient background -->
+<div class="orb orb1" [style.transform]="orb1Transform"></div>
+<div class="orb orb2" [style.transform]="orb2Transform"></div>
+<div class="orb orb3" [style.transform]="orb3Transform"></div>
+
+<div class="starfield" [style.opacity]="theme === 'dark' ? 1 : 0">
+  <div
+    class="star-dot"
+    *ngFor="let s of ambientStars"
+    [style.left]="s.left"
+    [style.top]="s.top"
+    [style.width.px]="s.size"
+    [style.height.px]="s.size"
+    [style.animation-duration.ms]="s.duration"
+    [style.animation-delay.ms]="s.delay">
+  </div>
+</div>
+
+<!-- Theme story overlay: painter, sun/moon medallion, birds, falling stars, banner -->
+<div class="painter" *ngIf="painterVisible" [@painterAnim]>
+  <svg viewBox="0 0 60 90" width="54" height="80">
+    <ellipse cx="30" cy="86" rx="14" ry="3" fill="rgba(0,0,0,0.15)"/>
+    <rect x="18" y="34" width="24" height="34" rx="10" fill="#2b2a2f"/>
+    <circle cx="30" cy="20" r="13" fill="#f0c9a0"/>
+    <path d="M18 16a12 12 0 0 1 24 0v4H18z" fill="#3a3a3f"/>
+    <rect x="8" y="40" width="8" height="22" rx="4" fill="#2b2a2f" transform="rotate(-18 12 40)"/>
+    <rect x="2" y="30" width="5" height="16" rx="2" fill="#8a6a4a" transform="rotate(-40 4 38)"/>
+    <circle cx="1" cy="28" r="4" fill="#e2a53d"/>
+    <rect x="20" y="66" width="8" height="18" rx="3" fill="#1c1b1f"/>
+    <rect x="32" y="66" width="8" height="18" rx="3" fill="#1c1b1f"/>
+  </svg>
+</div>
+
+<div class="medallion" [class.show]="medallionVisible" [class.flip]="medallionFlipped">
+  <div class="medallion-inner">
+    <div class="medallion-face sun">
+      <svg viewBox="0 0 40 40">
+        <circle cx="20" cy="20" r="9" fill="currentColor"/>
+        <g stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="20" y1="2" x2="20" y2="7"/><line x1="20" y1="33" x2="20" y2="38"/>
+          <line x1="2" y1="20" x2="7" y2="20"/><line x1="33" y1="20" x2="38" y2="20"/>
+          <line x1="7" y1="7" x2="10.5" y2="10.5"/><line x1="29.5" y1="29.5" x2="33" y2="33"/>
+          <line x1="7" y1="33" x2="10.5" y2="29.5"/><line x1="29.5" y1="10.5" x2="33" y2="7"/>
+        </g>
+      </svg>
+    </div>
+    <div class="medallion-face moon">
+      <svg viewBox="0 0 40 40"><path d="M25 4a16 16 0 1 0 11 27A13 13 0 0 1 25 4z" fill="currentColor"/></svg>
+    </div>
+  </div>
+</div>
+
+<div
+  class="bird"
+  *ngFor="let b of birds"
+  [style.top.px]="b.top"
+  [style.animation-duration.ms]="b.duration">
+  <svg viewBox="0 0 24 12" width="26" height="14">
+    <path class="wing" d="M0 6 Q6 0 12 6 Q18 0 24 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
+  </svg>
+</div>
+
+<div
+  class="falling-star"
+  *ngFor="let s of fallingStars"
+  [style.left]="s.left"
+  [style.animation-duration.ms]="s.duration">
+</div>
+
+<div
+  class="confetti-piece"
+  *ngFor="let c of confetti"
+  [style.left]="c.left"
+  [style.background]="c.color"
+  [style.animation-duration.ms]="c.duration">
+</div>
+
+<div
+  class="sparkle-piece"
+  *ngFor="let s of sparkles"
+  [style.left]="s.left"
+  [style.animation-duration.ms]="s.duration"
+  [style.--drift]="s.drift">{{ s.symbol }}</div>
+
+<div class="story-banner" *ngIf="bannerVisible" [@bannerAnim]>{{ bannerText }}</div>
+
+<!-- Calculator -->
+<div class="app">
+  <div class="calculator">
+    <div class="calc-inner">
+      <div class="top-bar">
+        <div class="brand-group">
+          <button
+            class="logo-mark"
+            type="button"
+            (click)="onLogoTap()"
+            title="Paldita"
+            aria-label="Paldita logo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2 L20 8 L17 21 L7 21 L4 8 Z"/>
+              <path d="M4 8 H20"/>
+              <path d="M8.5 8 L12 2 L15.5 8"/>
+              <path d="M8.5 8 L7 21 M15.5 8 L17 21"/>
+            </svg>
+          </button>
+          <span
+            class="brand"
+            [class.pressing]="palditaActive"
+            (mousedown)="onBrandPressStart($event)"
+            (mouseup)="onBrandPressEnd()"
+            (mouseleave)="onBrandPressEnd()"
+            (touchstart)="onBrandPressStart($event)"
+            (touchend)="onBrandPressEnd()"
+            (touchcancel)="onBrandPressEnd()">Paldita</span>
+        </div>
+        <div class="top-actions">
+          <button class="icon-btn" [class.active]="sciOpen" (click)="toggleSci()" title="Scientific functions" aria-label="Toggle scientific functions">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13c2-8 4-8 6 0s4 8 6 0 4-8 6 0"/></svg>
+          </button>
+          <button class="icon-btn" [class.active]="memRowOpen" (click)="toggleMemRow()" title="Memory" aria-label="Toggle memory functions">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-6-4-6 4V3z"/></svg>
+            <span class="mem-dot" [class.show]="memory !== 0"></span>
+          </button>
+          <button class="icon-btn" [class.active]="histOpen" (click)="toggleHistory()" title="History" aria-label="Toggle calculation history">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3 2.2"/></svg>
+          </button>
+          <button class="theme-switch" (click)="toggleTheme($event)" title="Toggle light / dark" aria-label="Toggle light or dark theme">
+            <span class="switch-sky"></span>
+            <span class="switch-stars"><span></span><span></span><span></span><span></span><span></span></span>
+            <span class="switch-cloud c1"></span>
+            <span class="switch-cloud c2"></span>
+            <span class="switch-knob"><span class="crater c1"></span><span class="crater c2"></span></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="display" (click)="copyValue()">
+        <div class="history-line">{{ historyLine }}</div>
+        <div class="previous">{{ previousValue }}</div>
+        <div class="current-wrap">
+          <div class="current" [class.long]="displayValue.length > 9">
+            <span class="digit" *ngFor="let c of displayChars; trackBy: trackByChar" [style.animation-delay.ms]="c.delay">{{ c.ch }}</span>
+          </div>
+          <span class="toast" *ngIf="showToast">{{ toastMsg }}</span>
+        </div>
+
+        <div class="history-panel" [class.open]="histOpen" (click)="$event.stopPropagation()">
+          <div class="history-panel-inner">
+            <div class="history-head">
+              <span>History</span>
+              <span class="clear" (click)="clearHistory($event)">Clear</span>
+            </div>
+            <div>
+              <div class="history-empty" *ngIf="historyData.length === 0">No calculations yet</div>
+              <div
+                class="history-item"
+                *ngFor="let h of historyData; let i = index"
+                [style.animation-delay.s]="i * 0.03"
+                (click)="reuseHistory(i)">
+                <div class="expr">{{ h.expr }}</div>
+                <div class="res">{{ formatNumber(h.result) }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="copy-hint">tap result to copy</div>
+
+      <div class="mem-row" [class.open]="memRowOpen" style="margin-top:10px">
+        <button class="mem-btn" (click)="memClear(); ripple($event)">MC</button>
+        <button class="mem-btn" (click)="memRecall(); ripple($event)">MR</button>
+        <button class="mem-btn" (click)="memAdd(); ripple($event)">M+</button>
+        <button class="mem-btn" (click)="memSub(); ripple($event)">M−</button>
+      </div>
+
+      <div class="sci-row" [class.open]="sciOpen">
+        <button class="sci-btn func" (click)="applyFunc('sin'); ripple($event)">sin</button>
+        <button class="sci-btn func" (click)="applyFunc('cos'); ripple($event)">cos</button>
+        <button class="sci-btn func" (click)="applyFunc('tan'); ripple($event)">tan</button>
+        <button class="sci-btn func" (click)="applyFunc('sqrt'); ripple($event)">√</button>
+
+        <button class="sci-btn func" (click)="applyFunc('log'); ripple($event)">log</button>
+        <button class="sci-btn func" (click)="applyFunc('ln'); ripple($event)">ln</button>
+        <button class="sci-btn operator" (click)="appendOperator('^'); ripple($event)">xʸ</button>
+        <button class="sci-btn func" (click)="applyFunc('fact'); ripple($event)">n!</button>
+
+        <button class="sci-btn func" (click)="applyFunc('sq'); ripple($event)">x²</button>
+        <button class="sci-btn func" (click)="applyFunc('recip'); ripple($event)">1/x</button>
+        <button class="sci-btn func" (click)="applyFunc('neg'); ripple($event)">±</button>
+        <button class="sci-btn func" (click)="insertPi(); ripple($event)">π</button>
+      </div>
+
+      <div class="buttons">
+        <button (click)="clearAll(); ripple($event)">AC</button>
+        <button (click)="deleteLast(); ripple($event)">DEL</button>
+        <button class="operator" (click)="appendOperator('%'); ripple($event)">%</button>
+        <button class="operator" (click)="appendOperator('÷'); ripple($event)">÷</button>
+
+        <button (click)="appendNumber('7'); ripple($event)">7</button>
+        <button (click)="appendNumber('8'); ripple($event)">8</button>
+        <button (click)="appendNumber('9'); ripple($event)">9</button>
+        <button class="operator" (click)="appendOperator('×'); ripple($event)">×</button>
+
+        <button (click)="appendNumber('4'); ripple($event)">4</button>
+        <button (click)="appendNumber('5'); ripple($event)">5</button>
+        <button (click)="appendNumber('6'); ripple($event)">6</button>
+        <button class="operator" (click)="appendOperator('-'); ripple($event)">−</button>
+
+        <button (click)="appendNumber('1'); ripple($event)">1</button>
+        <button (click)="appendNumber('2'); ripple($event)">2</button>
+        <button (click)="appendNumber('3'); ripple($event)">3</button>
+        <button class="operator" (click)="appendOperator('+'); ripple($event)">+</button>
+
+        <button class="span-2" (click)="appendNumber('0'); ripple($event)">0</button>
+        <button (click)="appendNumber('.'); ripple($event)">.</button>
+        <button class="equals" [class.secret]="secretActive" [class.paldita]="palditaActive" (click)="calculate(); ripple($event)">=</button>
+      </div>
+    </div>
+  </div>
+</div>
