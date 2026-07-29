@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="src/assets/favicon.svg" alt="Paldita Calculator Logo" width="120" />
+<img src="paldita-calculator/src/assets/favicon.svg" alt="Paldita Calculator Logo" width="120" />
 
 # Paldita Calculator
 
@@ -12,7 +12,6 @@ Beautiful glassmorphism • Scientific calculations • Animated themes • Memo
 
 ![Angular](https://img.shields.io/badge/Angular-20-DD0031?style=for-the-badge&logo=angular&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
-![SCSS](https://img.shields.io/badge/SCSS-Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white)
 ![RxJS](https://img.shields.io/badge/RxJS-7-B7178C?style=for-the-badge&logo=reactivex&logoColor=white)
 ![MIT License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
 ![Open Source](https://img.shields.io/badge/Open%20Source-Yes-success?style=for-the-badge)
